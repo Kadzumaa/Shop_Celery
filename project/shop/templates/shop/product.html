@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "default.html" %}
 
-</body>
-</html>
+
+
+
+{% block title %}
+Products
+{% endblock title %}
+
+
+{% block content %}
+
+
+        <table>
+            <tr>
+                <td>Название</td>
+                <td>Описание</td>
+                <td>Категория</td>
+                <td>Цена</td>
+                <td>Количество</td>
+
+
+            </tr>
+
+
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description|truncatechars:15 }}</td>
+                <td>{{ product.category.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+            </tr>
+
+
+
+{% endblock content %}

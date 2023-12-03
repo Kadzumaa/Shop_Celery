@@ -142,6 +142,7 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = "/products"
+ACCOUNT_LOGOUT_REDIRECT_URL = '/products'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -156,3 +157,31 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "anatoliy.buliyov@yandex.ru"
+EMAIL_HOST_PASSWORD = "zfswraxcdviqsply"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = "anatoliy.buliyov@yandex.ru"
+
+
+SERVER_EMAIL = "anatoliy.buliyov@yandex.ru"
+MANAGERS = (
+    ('Ivan', 'buliyov.a.e@gmail.com'),
+)
+
+ADMINS = (
+    ('anton', "Anatoliy.Buliyov@yandex.ru"),
+)
+
+
+CELERY_BROKER_URL = 'redis://default:AqkMkfiOdw9TUePBv8qoRcu7qky2n458@redis-12551.c302.asia-northeast1-1.gce.cloud.redislabs.com:12551'
+CELERY_RESULT_BACKEND = 'redis://default:AqkMkfiOdw9TUePBv8qoRcu7qky2n458@redis-12551.c302.asia-northeast1-1.gce.cloud.redislabs.com:12551'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

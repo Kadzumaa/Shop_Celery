@@ -20,9 +20,10 @@ from django.urls import path, include
 
 
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),  # Оставили только allauth
     path("products/", include("shop.urls")),
-    # path('products/', ProductsList.as_view())
+
 ]

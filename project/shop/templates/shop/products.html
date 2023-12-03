@@ -30,6 +30,7 @@ Products
                 <td>Категория</td>
                 <td>Цена</td>
                 <td>Количество</td>
+                <td>Дата создания</td>
 
                 {# Условие получается составным. #}
                 {% if perms.shop.change_product or perms.shop.delete_product %}
@@ -45,6 +46,7 @@ Products
                 <td>{{ product.category.name }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.quantity }}</td>
+                <td>{{ product.time_create}}</td>
 
                 <td>
                     {# А здесь доступ для каждой ссылки теперь будем проверять отдельно #}

@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.urls import reverse
-
+from django.contrib.auth.models import User
 
 class Product(models.Model):
     name = models.CharField(
@@ -20,6 +20,7 @@ class Product(models.Model):
     price = models.FloatField(
         validators=[MinValueValidator(0.0)],
     )
+    time_create = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.name.title()}: {self.description[:10]}'
@@ -28,8 +29,21 @@ class Product(models.Model):
         return reverse('product_detail', args=[str(self.id)])
 
 
+class Subscription(models.Model):
+    user = models.ForeignKey(
+        to=User,
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+    )
+    category = models.ForeignKey(
+        to='Category',
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+    )
+
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.name.title()
+
